@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Nmap - Red Infrastracture</title>
+  <link href="static/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
+  </script>
+  <link href="static/css/tagsinput.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="sb-nav-fixed">
+  {% include 'top_navbar.html' %}
+
+  <div id="layoutSidenav">
+    {% include 'navbar.html' %}
+
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid">
+          <h1 class="mt-4">Nmap Scan</h1>
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">
+              <a href="/">Dashboard</a>&nbsp;»&nbsp;<a href="/nmap">Nmap Scan</a></li>
+          </ol>
+
+
+
+
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <i class="fas fa-cubes mr-1"></i>
+                  APT Packages
+                </div>
+                <div class="card-body">
+                  <select id="packageList" multiple class="form-control" data-role="tagsinput">
+                    <option value="nmap">nmap</option>
+                    <option value="curl">curl</option>
+                    <option value="htop">htop</option>
+                  </select>
+
+                </div>
+                <div class="card-footer small text-muted">List of Packages the Infrastracture should have.</div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <i class="fas fa-list-alt mr-1"></i>
+                  IP List
+                </div>
+                <div class="card-body">
+                  <select id="ipList" multiple="" class="form-control" data-role="tagsinput">
+                    <option value="192.168.0.1">192.168.0.1</option>
+                    <option value="125.11.20.33">125.11.20.33</option>
+                  </select>
+
+                </div>
+                <div class="card-footer small text-muted">List of IPs you want to distribute for scan.</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <i class="fas fa-terminal mr-1"></i>
+                  Nmap Parameters
+                </div>
+                <div class="card-body">
+                  <select id="parameterList" multiple class="form-control" data-role="tagsinput">
+                    <option value="-sS">-sS</option>
+                    <option value="-Pn">-Pn</option>
+                    <option value="-sV">-sV</option>
+                  </select>
+                </div>
+                <div class="card-footer small text-muted"><a target="_blank" href="https://nmap.org/book/man.html"><i
+                      class="fas fa-info-circle"></i></a> Parameters that the scan will execute.</div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <i class="fas fa-sitemap mr-1"></i>
+                  Server Distribution
+                </div>
+                <div class="card-body">
+                  <select id="serversList" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </div>
+                <div class="card-footer small text-muted">Number of Servers you want to distribute your Scans.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <i class="fas fa-rocket mr-1"></i>
+                  Specifications
+                </div>
+                <div class="card-body">
+                  <table class="table table-sm">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Memory</th>
+                        <th>vCPUs</th>
+                        <th>Transfer</th>
+                        <th>SSD Disk</th>
+                        <th>$/HR</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody class="server-specs">
+                      <tr>
+                        <td>1GB</td>
+                        <td>1vCPU</td>
+                        <td>1TB</td>
+                        <td>25GB</td>
+                        <td>$0.007</td>
+                        <td><input type="radio" name="server_spec" data-price="0.007" value="s-1vcpu-1gb" checked />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2GB</td>
+                        <td>1vCPU</td>
+                        <td>2TB</td>
+                        <td>50GB</td>
+                        <td>$0.015</td>
+                        <td><input type="radio" name="server_spec" data-price="0.015" value="s-1vcpu-2gb" /></td>
+                      </tr>
+                      <tr>
+                        <td>2GB</td>
+                        <td>2vCPUs</td>
+                        <td>3TB</td>
+                        <td>60GB</td>
+                        <td>$0.022</td>
+                        <td><input type="radio" name="server_spec" data-price="0.022" value="s-2vcpu-2gb" /></td>
+                      </tr>
+                      <tr>
+                        <td>4GB</td>
+                        <td>2vCPUs</td>
+                        <td>4TB</td>
+                        <td>80GB</td>
+                        <td>$0.030</td>
+                        <td><input type="radio" name="server_spec" data-price="0.030" value="s-2vcpu-4gb" /></td>
+                      </tr>
+                      <tr>
+                        <td>8GB</td>
+                        <td>4vCPUs</td>
+                        <td>5TB</td>
+                        <td>160GB</td>
+                        <td>$0.060</td>
+                        <td><input type="radio" name="server_spec" data-price="0.060" value="s-4vcpu-8gb" /></td>
+                      </tr>
+                      <tr>
+                        <td>16GB</td>
+                        <td>8vCPUs</td>
+                        <td>6TB</td>
+                        <td>320GB</td>
+                        <td>$0.119</td>
+                        <td><input type="radio" name="server_spec" data-price="0.119" value="s-8vcpu-16gb" /></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer small text-muted">Select Specifications of the spawned Servers.</div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card shadow mb-4">
+                <div class="card-header text-center">
+                  <i class="fas fa-chalkboard mr-1"></i>
+                  Overview
+                </div>
+                <div class="card-body">
+
+                  <div class="d-flex flex-column">
+                    <div class="p-2">Number of IPs <span id="ip_number" class="font-weight-bold">0</span></div>
+                    <div class="p-2">Servers for distribution <span id="server_number" class="font-weight-bold">0</span>
+                    </div>
+                    <div class="p-2">Total Cost <span id="price_number" class="font-weight-bold">0</span></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="form-control btn btn-success"><i class="fas fa-play-circle mr-1"></i>
+              Execute</button>
+          </div>
+
+
+
+          <!-- MAIN HERE -->
+
+
+
+
+
+        </div>
+      </main>
+
+
+
+      {% include 'footer.html' %}
+      <!-- Navbar -->
+    </div>
+  </div>
+  <!-- Navbar -->
+
+  {% include 'scripts.html' %}
+  <script src="static/js/tagsinput.js"></script>
+  <script src="static/js/nmap.js"></script>
+</body>
+
+</html>
+
+<style>
+  tr.selected {
+    background: #ddd;
+  }
+</style>

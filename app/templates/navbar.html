@@ -1,0 +1,28 @@
+<div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+      <div class="nav">
+        <div class="sb-sidenav-menu-heading">Core</div>
+        <a class="nav-link" href="index.html">
+          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+          Dashboard
+        </a>
+        <div class="sb-sidenav-menu-heading">Actions</div>
+        <a class="nav-link" href="/nmap">
+          <div class="sb-nav-link-icon"> <img src="static/img/zenmap_logo.png" alt="Nmap Logo" width="25" height="25"> </div>
+          Nmap Scan
+        </a>
+        <a class="nav-link" href="/custom_shellscript">
+          <div class="sb-nav-link-icon"> <img src="static/img/shellscript_logo.png" alt="Nmap Logo" width="25" height="25"> </div>
+          Custom Shellscript
+        </a>
+      </div>
+    </div>
+    <div class="sb-sidenav-footer">
+      <div class="small">Logged in as:</div>
+      {% if current_user.is_authenticated %}
+      {{ current_user.get_id()|e}}
+      {% endif %}
+    </div>
+  </nav>
+</div>
