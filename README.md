@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://turningpointsoftheancientworld.com/wp-content/uploads/2018/07/Phalanx1-672x372.png" alt="Project logo"></a>
+ <img src="https://turningpointsoftheancientworld.com/wp-content/uploads/2018/07/Phalanx1-672x372.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Flaming Sarissa</h3>
