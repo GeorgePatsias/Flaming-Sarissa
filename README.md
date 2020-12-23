@@ -12,7 +12,7 @@
 
 ---
 
-<p align="center">Dynamic deployment of temporary Infrastructure for Software Execution.
+<p align="center">Dynamic deployment of a temporary Infrastructure for Software Execution.
     <br> 
 </p>
 
@@ -26,8 +26,8 @@
 
 ## 🧐 About <a name = "about"></a>
 
-The purpose of this project is to scale the use of your scripts on the Cloud.
-Dynamicaly create a temporary infrastracture to accomodate your Shellcodes, Scans, Docker images, Nmap scans collecting the results to a centralized platform. The platform distributes the command execution to servers every region, not raising flags about targeted attacks and requests that cannot be backtracked, after that destroys the infrastructure and presenting the report to the platform.
+The purpose of this project is to scale the use of your software on the Cloud.
+Dynamically create a temporary infrastructure to accommodate your Shellcodes, Scans, Docker images collecting the results to a centralized DB. The platform distributes the command execution to the servers from a variety of regions, not raising flags about targeted attacks and requests that cannot be backtracked. After that, it destroys the infrastructure and a report is generated on the platform.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -51,7 +51,7 @@ virtualenv -p python3 venv
 
 ### Install Requirements
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Run the Server
