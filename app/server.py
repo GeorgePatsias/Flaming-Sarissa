@@ -4,7 +4,7 @@ from modules.Shared.User import User
 from modules.Shared.Logger import logger
 from modules.Shared.MongoManager import mongo_connection
 from flask import Flask, session, render_template, send_from_directory
-from config import USERNAME, MONGO_DB, MONGO_USERS_COLL, SESSION_EXPIRE
+from config import MONGO_DB, MONGO_USERS_COLL, SESSION_EXPIRE
 from flask_login import login_required, current_user, LoginManager, login_user, UserMixin
 
 import modules.Nmap.routes

@@ -1,7 +1,6 @@
 from uuid import uuid4
 from flask import escape, request
 from modules.Shared.User import User
-from config import USERNAME, PASSWORD
 from modules.Shared.Logger import logger
 from urllib.parse import urlparse, urljoin
 from config import MONGO_DB, MONGO_USERS_COLL
