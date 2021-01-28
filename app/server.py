@@ -1,6 +1,6 @@
 from os import urandom, path
-from datetime import timedelta
 from modules.Shared.User import User
+from datetime import timedelta, datetime
 from modules.Shared.Logger import logger
 from modules.Shared.MongoManager import mongo_connection
 from flask import Flask, session, render_template, send_from_directory
@@ -9,7 +9,9 @@ from flask_login import login_required, current_user, LoginManager, login_user, 
 
 import modules.Nmap.routes
 import modules.Login.routes
+import modules.Profile.routes
 import modules.Dashboard.routes
+import modules.UserManagement.routes
 import modules.CustomShellscript.routes
 
 app = Flask(__name__)
@@ -24,7 +26,9 @@ login_manager.needs_refresh_message_category = "info"
 
 app.register_blueprint(modules.Nmap.routes.app)
 app.register_blueprint(modules.Login.routes.app)
+app.register_blueprint(modules.Profile.routes.app)
 app.register_blueprint(modules.Dashboard.routes.app)
+app.register_blueprint(modules.UserManagement.routes.app)
 app.register_blueprint(modules.CustomShellscript.routes.app)
 
 
@@ -39,6 +43,8 @@ def load_user(email):
 
         user = User()
         user.id = email
+        users_collec.update_one({'email': email},
+                                {'$set': {'last_activity': str(datetime.now().strftime("%Y-%m-%d %H:%M"))}})
         mongo_connection().close()
 
         return user

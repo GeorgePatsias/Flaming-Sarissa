@@ -10247,3 +10247,12 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
+
+#btnEditUser,
+#btnDelete {
+    margin: 5px;
+}
+
+table.dataTable td {
+  border-bottom: 1px solid #333;
+}

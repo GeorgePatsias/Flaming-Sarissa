@@ -11,5 +11,4 @@ app = Blueprint('dashboard', __name__)
 @app.route('/')
 @login_required
 def dashboard_view():
-    print(current_user.id)
     return render_template('dashboard.html')

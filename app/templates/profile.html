@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Profile - Flaming Sarissa</title>
+  <link href="static/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
+  </script>
+</head>
+
+<body class="sb-nav-fixed">
+  {% include 'top_navbar.html' %}
+
+  <div id="layoutSidenav">
+    {% include 'navbar.html' %}
+
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid">
+          <h1 class="mt-4">Profile</h1>
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">
+              <a href="/">Dashboard</a>&nbsp;»&nbsp;<a href="/profile">Profile</a></li>
+          </ol>
+
+
+
+
+          <!-- MAIN HERE -->
+
+
+          <div class="d-flex row">
+            <div class="col-lg-6 flex-fill">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <i class="far fa-clipboard mr-1"></i>
+                  Information
+                </div>
+                <div class="card-body">
+
+
+                  <form id="profileForm" action="/profile" method="POST">
+                    <div class="form-group col-md-12">
+                      <label for="userEmail" class="control-label">Email</label>
+                      <input type="email" value='{{ current_user.get_id()|e }}' class="form-control" id="userEmail"
+                        placeholder="Email" disabled>
+                    </div>
+                    <hr>
+                    <div class="form-group col-md-12">
+                      <label for="currentPassword" class="control-label">Current Password</label>
+                      <input type="password" value='' class="form-control" id="currentPassword" name="current_password"
+                        placeholder="Enter your Current Password">
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="newPassword" class="control-label">New Password</label>
+                      <input type="password" value='' class="form-control" id="newPassword" name="new_password"
+                        placeholder="Enter your New Password">
+                    </div>
+                  </form>
+                  <button type="submit" form="profileForm" class="form-control btn btn-success"><i
+                      class="fas fa-save mr-1"></i>Save</button>
+                </div>
+                <div class="card-footer small text-muted">Profile Information
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 d-flex">
+              <div class="card shadow mb-4 w-100">
+                <div class="card-header">
+                  <i class="fab fa-cloudversify mr-1"></i>
+                  Cloud Connections
+                </div>
+                <div class="card-body">
+                  <form id="connectionsForm" action="/profile-connections" method="POST">
+                    <div class="form-group col-md-12">
+                      <label for="doToken" class="control-label"><img src="static/img/digital-ocean-logo.png"
+                          alt="Digital Ocean Logo" width="25" height="25"> Digital Ocean*</label>
+                      <input type="text" value="{{ profile_data.do_token }}" class="form-control" id="doToken"
+                        name="do_token" placeholder="Digital Ocean Token">
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="linodeToken" class="control-label"><img src="static/img/linode-logo.png"
+                          alt="Linode Logo" width="30" height="30"> Linode</label>
+                      <input type="text" value='' class="form-control" id="linodeToken" placeholder="Linode Token"
+                        disabled>
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="awsToken" class="control-label"><img src="static/img/aws-logo.png" alt="AWS Logo"
+                          width="35" height="35"> Amazon Web Services</label>
+                      <input type="text" value='' class="form-control" id="awsToken" placeholder="AWS Token" disabled>
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="azureToken" class="control-label"><img src="static/img/azure-logo.png"
+                          alt="Azure Logo" width="30" height="30"> Microsoft Azure</label>
+                      <input type="text" value='' class="form-control" id="azureToken" placeholder="Azure Token"
+                        disabled>
+                    </div>
+                    <hr>
+                    <div class="form-group col-md-12">
+                      <label for="sshKey" class="control-label"><i class="fas fa-key mr-1"></i> SSH Key*</label>
+                      <textarea class="form-control" id="sshKey" placeholder="Enter your SSH Key"
+                        name="ssh_key">{{ profile_data.ssh_key }}</textarea>
+                    </div>
+                  </form>
+                  <button type="submit" form="connectionsForm" class="form-control btn btn-success"><i
+                      class="fas fa-save mr-1"></i>Save</button>
+                </div>
+                <div class="card-footer small text-muted">Services Connections with Cloud Providers
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+
+
+      {% include 'footer.html' %}
+      <!-- Navbar -->
+    </div>
+  </div>
+  <!-- Navbar -->
+
+  {% include 'scripts.html' %}
+
+  <script src="static/js/profile.js"></script>
+</body>
+
+
+</html>
